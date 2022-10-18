@@ -14,6 +14,7 @@ login_url = 'https://yqtb.sut.edu.cn/login'
 
 def login(username, password):
     login_data = json.dumps( {'user_account': username, 'user_password': password})
+    requests.packages.urllib3.disable_warnings()
     s = requests.Session()
 
     login_reply = s.post(login_url, data=login_data, headers=headers, verify=False)
